@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded",function(){
 
 // index&film start
 filmsblock = document.querySelector('.films_block')
-if(window.location.pathname=="/D:/projects/uch_prak_fastapi/verstka/index.html" ){
+if (document.location.pathname === '/' || document.location.pathname.indexOf('index') >-1 ) {
 async function uploadMultiple() {
     const response = await fetch("http://127.0.0.1:8000/", {
       method: "GET",
@@ -56,12 +56,10 @@ async function film_from_cat() {
       element.style.display = 'flex'
     }   
 });
-}}
-catch{
-  console.log('--')
 }
 
-if(window.location.pathname=="/D:/projects/uch_prak_fastapi/verstka/index.html" ){
+
+if (document.location.pathname === '/' || document.location.pathname.indexOf('index') >-1 ){
 let genrupd = document.querySelector('.categorys').addEventListener('click', (e)=>{
   localStorage.setItem('test', e.target.id);
   let film_genr = ''
@@ -89,10 +87,13 @@ let genrupd = document.querySelector('.categorys').addEventListener('click', (e)
       }   
   });
   }
-})}
+})}}
 
+catch{
+  console.log('--')
+}
 categorys = document.querySelector('.categorys')
-if(window.location.pathname=="/D:/projects/uch_prak_fastapi/verstka/index.html" ){
+if (document.location.pathname === '/' || document.location.pathname.indexOf('index') >-1 ){
   async function uploadMultiple() {
       const response = await fetch("http://127.0.0.1:8000/genres", {
         method: "GET",
@@ -117,17 +118,15 @@ if(window.location.pathname=="/D:/projects/uch_prak_fastapi/verstka/index.html" 
   uploadMultiple()
   }
 
-if(window.location.pathname=="/D:/projects/uch_prak_fastapi/verstka/film.html" ){
+  if (document.location.pathname === '/film' || document.location.pathname.indexOf('film') >-1 ){
   async function gefilm() {
       const response = await fetch(`http://127.0.0.1:8000/film/${parseInt(localStorage.getItem("id"))}`, {
         method: "GET",
       });
       const result = await response.json();
-      console.log(result)
       for (i in result){
         if (i == 'genres'){
           for (o of result[i]){
-            console.log(o)
             document.querySelector('.Film_Genre').innerHTML = 'Жанры: ' +' ' + o.name
           }
         }else{
@@ -144,7 +143,7 @@ if(window.location.pathname=="/D:/projects/uch_prak_fastapi/verstka/film.html" )
 
 // news&new start
 
-if(window.location.pathname=="/D:/projects/uch_prak_fastapi/verstka/news.html" ){
+if (document.location.pathname === '/news' || document.location.pathname.indexOf('news') >-1 ){
   async function uploadMultiple() {
       const response = await fetch("http://127.0.0.1:8000/news", {
         method: "GET",
@@ -170,7 +169,7 @@ if(window.location.pathname=="/D:/projects/uch_prak_fastapi/verstka/news.html" )
 }
 
 
-if(window.location.pathname=="/D:/projects/uch_prak_fastapi/verstka/news.html" ){
+if (document.location.pathname === '/news' || document.location.pathname.indexOf('news') >-1 ){
   async function get_Fromcat_new() {
       const response = await fetch(`http://127.0.0.1:8000/cat/new/${window.id_cat}`, {
         method: "GET",
@@ -215,7 +214,7 @@ if(window.location.pathname=="/D:/projects/uch_prak_fastapi/verstka/news.html" )
 
 
 categorys = document.querySelector('.categorys')
-if(window.location.pathname=="/D:/projects/uch_prak_fastapi/verstka/news.html" ){
+if (document.location.pathname === '/news' || document.location.pathname.indexOf('news') >-1 ){
   async function uploadMultiple() {
       const response = await fetch("http://127.0.0.1:8000/news/cats/", {
         method: "GET",
@@ -231,7 +230,7 @@ if(window.location.pathname=="/D:/projects/uch_prak_fastapi/verstka/news.html" )
   uploadMultiple()
   }
 
-  if(window.location.pathname=="/D:/projects/uch_prak_fastapi/verstka/new.html" ){
+  if (document.location.pathname === '/new' || document.location.pathname.indexOf('new') >-1 ){
     async function uploadMultiple() {
         const response = await fetch(`http://127.0.0.1:8000/news/${parseInt(localStorage.getItem("id"))}`, {
           method: "GET",
@@ -247,7 +246,7 @@ if(window.location.pathname=="/D:/projects/uch_prak_fastapi/verstka/news.html" )
 
 //  cooments start
 comms= document.querySelector('.comments')
-  if(window.location.pathname=="/D:/projects/uch_prak_fastapi/verstka/new.html" ){
+if (document.location.pathname === '/new' || document.location.pathname.indexOf('new') >-1 ){
     async function uploadMultiple() {
         const response = await fetch(`http://127.0.0.1:8000/getcomments/${parseInt(localStorage.getItem("id"))}`, {
           method: "GET",
@@ -271,7 +270,7 @@ comms= document.querySelector('.comments')
 //  cooments end
 
 // post add film
-if(window.location.pathname=="/D:/projects/uch_prak_fastapi/verstka/index.html" ){
+if (document.location.pathname === '/' || document.location.pathname.indexOf('index') >-1 ){
 send = document.querySelector('.sendform').addEventListener("click",function(){
   let datafilm = {
     name: $('#name_film').val(),
@@ -311,7 +310,7 @@ send = document.querySelector('.sendform').addEventListener("click",function(){
 }
 
 // post add new comments 
-if(window.location.pathname=="/D:/projects/uch_prak_fastapi/verstka/new.html" ){
+if (document.location.pathname === '/new' || document.location.pathname.indexOf('new') >-1 ){
 send = document.querySelector('.sendcomment_form').addEventListener("click",function(){
   let datafilm = {
     nameuser: $('#nameuser').val(),
